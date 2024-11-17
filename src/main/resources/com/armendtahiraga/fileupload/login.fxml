@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: F7F8FA;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.armendtahiraga.fileupload.LoginController">
+   <children>
+      <VBox layoutX="420.0" layoutY="292.0" prefHeight="440.0" prefWidth="600.0" style="-fx-background-color: FFFFFF; -fx-background-radius: 10;" styleClass="shadow-blue">
+         <children>
+            <Label alignment="CENTER" prefHeight="47.0" prefWidth="600.0" text="File Upload">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="space-grotesk" />
+                  <String fx:value="bold" />
+               </styleClass></Label>
+            <VBox prefWidth="100.0">
+               <children>
+                  <Label text="Username">
+                     <styleClass>
+                        <String fx:value="space-grotesk" />
+                        <String fx:value="regular" />
+                     </styleClass>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField style="-fx-background-color: FFF; -fx-border-color: 000000; -fx-border-width: 0.5; -fx-border-style: solid; -fx-border-radius: 3;">
+                     <styleClass>
+                        <String fx:value="space-grotesk" />
+                        <String fx:value="regular" />
+                        <String fx:value="input-border-color" />
+                     </styleClass></TextField>
+               </children>
+               <padding>
+                  <Insets left="90.0" right="90.0" top="30.0" />
+               </padding>
+            </VBox>
+            <VBox prefWidth="100.0">
+               <children>
+                  <Label text="Password">
+                     <styleClass>
+                        <String fx:value="space-grotesk" />
+                        <String fx:value="regular" />
+                     </styleClass>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="8.0" />
+                     </VBox.margin>
+                  </Label>
+                  <TextField style="-fx-background-color: FFF; -fx-border-color: 000000; -fx-border-width: 0.5; -fx-border-style: solid; -fx-border-radius: 3;">
+                     <styleClass>
+                        <String fx:value="input-border-color" />
+                        <String fx:value="regular" />
+                        <String fx:value="space-grotesk" />
+                     </styleClass></TextField>
+               </children>
+               <padding>
+                  <Insets left="90.0" right="90.0" top="30.0" />
+               </padding>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="50.0" prefWidth="220.0" style="-fx-border-radius: 4;" text="LOGIN" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="space-grotesk" />
+                        <String fx:value="bold" />
+                        <String fx:value="background-blue" />
+                        <String fx:value="button-20" />
+                     </styleClass>
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets top="55.0" />
+               </padding>
+            </VBox>
+         </children>
+         <padding>
+            <Insets top="36.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
