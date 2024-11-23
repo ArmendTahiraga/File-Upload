@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class DatabaseManager {
-    private static String url = "jdbc:postgresql://aws-0-eu-central-1.pooler.supabase.com:5432/postgres?user=postgres.rssumxdyrdqeksxnabao&password=72DHGEKpgrdrATxb";
     private static Connection connection;
 
     public static void createConnection() {
@@ -15,7 +14,7 @@ public class DatabaseManager {
         }
 
         try {
-            connection = DriverManager.getConnection(url);
+            connection = DriverManager.getConnection("jdbc:postgresql://aws-0-eu-central-1.pooler.supabase.com:5432/postgres?user=postgres.rssumxdyrdqeksxnabao&password=72DHGEKpgrdrATxb");
         } catch (SQLException exception) {
             throw new RuntimeException(exception);
         }
