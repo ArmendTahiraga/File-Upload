@@ -10,6 +10,6 @@
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.armendtahiraga.fileupload.AdminController"
             prefHeight="1024.0" prefWidth="1440.0"
-            stylesheets="@style.css">
+            stylesheets="@../../../style.css">
 
 </AnchorPane>

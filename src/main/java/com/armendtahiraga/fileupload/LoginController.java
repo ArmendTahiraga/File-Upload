@@ -1,6 +1,5 @@
 package com.armendtahiraga.fileupload;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -28,7 +27,7 @@ public class LoginController {
     private Button loginButton;
 
     @FXML
-    void login(ActionEvent event) {
+    void login() {
         if (usernameTextField.getText().isEmpty() || passwordPasswordField.getText().isEmpty()) {
             errorMessageLabel.setText("Username and Password are required.");
             return;

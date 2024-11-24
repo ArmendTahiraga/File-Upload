@@ -1,5 +1,9 @@
 package com.armendtahiraga.fileupload;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +35,7 @@ public class DatabaseManager {
         List<User> users = new ArrayList<>();
 
         try {
-            String select = "SELECT * FROM \"User\"";
+            String select = "select * from \"User\"";
             PreparedStatement preparedStatement = connection.prepareStatement(select);
             ResultSet result = preparedStatement.executeQuery();
 
@@ -52,5 +56,76 @@ public class DatabaseManager {
         }
 
         return users;
+    }
+
+    public static Contract uploadContract(Contract contract) {
+        checkConnection();
+
+        try {
+            String insert = "insert into \"Contract\" (\"UserId\", \"FileName\", \"File\", \"ExpDate\") values (?, ?, ?, ?) returning \"Id\"";
+            PreparedStatement preparedStatement = connection.prepareStatement(insert);
+            FileInputStream fileInputStream = new FileInputStream(contract.getFile());
+
+            preparedStatement.setInt(1, contract.getUserId());
+            preparedStatement.setString(2, contract.getFile().getName());
+            preparedStatement.setBytes(3, fileInputStream.readAllBytes());
+            preparedStatement.setDate(4, Date.valueOf(contract.getDate()));
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                contract.setId(resultSet.getInt("Id"));
+                return contract;
+            }
+        } catch (Exception exception){
+            throw new RuntimeException(exception);
+        }
+
+        return null;
+    }
+
+    public static List<Contract> getContracts() {
+        checkConnection();
+        List<Contract> contracts = new ArrayList<>();
+
+        try {
+            String select = "select * from \"Contract\"";
+            PreparedStatement preparedStatement = connection.prepareStatement(select);
+            ResultSet result = preparedStatement.executeQuery();
+
+            while (result.next()) {
+                byte[] fileData = result.getBytes("File");
+                String fileName = result.getString("FileName");
+                File file = new File(fileName);
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+                fileOutputStream.write(fileData);
+
+                Contract contract = new Contract(result.getInt("Id"), result.getInt("UserId"), file, result.getDate("ExpDate").toLocalDate());
+                contracts.add(contract);
+            }
+        } catch (Exception exception){
+            throw new RuntimeException(exception);
+        }
+
+        return contracts;
+    }
+
+    public static boolean deleteContract(Contract contract) {
+        checkConnection();
+
+        try {
+            String select = "delete from \"Contract\" where \"Id\" = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(select);
+            preparedStatement.setInt(1, contract.getId());
+            int rowsDeleted = preparedStatement.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                return true;
+            }
+        } catch (SQLException exception){
+            throw new RuntimeException(exception);
+        }
+
+        return false;
     }
 }
