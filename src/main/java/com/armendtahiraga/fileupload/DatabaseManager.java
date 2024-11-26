@@ -1,6 +1,5 @@
 package com.armendtahiraga.fileupload;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -120,6 +119,73 @@ public class DatabaseManager {
             int rowsDeleted = preparedStatement.executeUpdate();
 
             if (rowsDeleted > 0) {
+                return true;
+            }
+        } catch (SQLException exception){
+            throw new RuntimeException(exception);
+        }
+
+        return false;
+    }
+
+    public static boolean deleteUser(User user) {
+        checkConnection();
+
+        try {
+            String select = "delete from \"User\" where \"Id\" = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(select);
+            preparedStatement.setInt(1, user.getId());
+            int rowsDeleted = preparedStatement.executeUpdate();
+
+            if (rowsDeleted > 0) {
+                return true;
+            }
+        } catch (SQLException exception){
+            throw new RuntimeException(exception);
+        }
+
+        return false;
+    }
+
+    public static User addUser(User user) {
+        checkConnection();
+
+        try {
+            String insert = "insert into \"User\" (\"Username\", \"Password\", \"Role\") values (?, ?, ?) returning \"Id\"";
+            PreparedStatement preparedStatement = connection.prepareStatement(insert);
+
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getRole() == Role.ADMIN ? "admin" : "user");
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                user.setId(resultSet.getInt("Id"));
+                return user;
+            }
+        } catch (SQLException exception){
+            throw new RuntimeException(exception);
+        }
+
+        return null;
+    }
+
+    public static boolean updateUser(int id, String username, String password, Role role) {
+        checkConnection();
+
+        try {
+            String update = "update \"User\" set \"Username\" = ?, \"Password\" = ?, \"Role\" = ? where \"Id\" = ?";
+            PreparedStatement preparedStatement = connection.prepareStatement(update);
+
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            preparedStatement.setString(3, role == Role.ADMIN ? "admin" : "user");
+            preparedStatement.setInt(4, id);
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+
+            if (rowsUpdated > 0) {
                 return true;
             }
         } catch (SQLException exception){

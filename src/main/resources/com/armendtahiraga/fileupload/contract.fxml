@@ -14,197 +14,211 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../../../style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.armendtahiraga.fileupload.ContractController">
-   <children>
-      <HBox layoutX="45.0" layoutY="35.0">
-         <children>
-            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="45.0" prefWidth="45.0" styleClass="background-blue">
-               <graphic>
-                   <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                       <Image url="@../../../icons/logout.png" />
-                   </ImageView>
-               </graphic>
-               <padding>
-                  <Insets left="4.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets right="35.0" />
-               </HBox.margin>
-            </Button>
-            <Label fx:id="helloLabel" text="Hello, Amina!">
-               <font>
-                  <Font size="40.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="bold" />
-                  <String fx:value="space-grotesk" />
-               </styleClass>
-            </Label>
-         </children>
-      </HBox>
-      <VBox layoutX="216.0" layoutY="114.0" prefHeight="810.0" prefWidth="1008.0">
-         <children>
-            <HBox alignment="CENTER_LEFT">
-               <children>
-                  <Label alignment="BOTTOM_LEFT" text="Contracts">
-                     <font>
-                        <Font size="32.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="medium" />
-                        <String fx:value="space-grotesk" />
-                     </styleClass>
-                     <HBox.margin>
-                        <Insets right="671.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Button fx:id="uploadContractButton" mnemonicParsing="false" onAction="#openUploadContractModal" style="-fx-border-radius: 5;" text="Upload Contract" textFill="WHITE">
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                     <styleClass>
-                        <String fx:value="background-blue" />
-                        <String fx:value="medium" />
-                        <String fx:value="space-grotesk" />
-                        <String fx:value="button-20" />
-                     </styleClass>
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Button>
-               </children>
-               <padding>
-                  <Insets bottom="20.0" />
-               </padding>
-            </HBox>
-            <TableView fx:id="contractsTable" prefHeight="740.0" prefWidth="200.0" stylesheets="@../../../style.css">
-              <columns>
-                <TableColumn fx:id="fileNameTableColumn" minWidth="250.0" prefWidth="75.0" text="File Name" />
-                <TableColumn fx:id="expirationDateTableColumn" minWidth="607.0" prefWidth="75.0" text="Expiration Date" />
-                  <TableColumn fx:id="openButtonTableColumn" prefWidth="75.0" />
-                  <TableColumn fx:id="deleteButtonTableColumn" prefWidth="75.0" />
-              </columns>
-            </TableView>
-         </children>
-      </VBox>
-      <VBox fx:id="uploadContractModal" layoutX="445.0" layoutY="315.0" prefHeight="370.0" prefWidth="550.0" style="-fx-background-color: FFF; -fx-border-radius: 8; -fx-background-radius: 8;" styleClass="shadow-black" visible="false">
-         <children>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
-               <children>
-                  <Label text="Upload Contract">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="bold" />
-                        <String fx:value="space-grotesk" />
-                     </styleClass>
-                     <HBox.margin>
-                        <Insets right="279.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Button fx:id="closeModalButton" mnemonicParsing="false" onAction="#closeModal" style="-fx-background-color: fff;">
-                     <graphic>
-                         <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                             <Image url="@../../../icons/close.png" />
-                         </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-            </HBox>
-            <Label text="Contract">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="medium" />
-                  <String fx:value="space-grotesk" />
-               </styleClass>
-               <VBox.margin>
-                  <Insets bottom="4.0" top="40.0" />
-               </VBox.margin>
-            </Label>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets bottom="35.0" />
-               </VBox.margin>
-               <children>
-                  <Label fx:id="contractNameLabel" prefHeight="39.0" prefWidth="272.0" style="-fx-border-width: 0.5; -fx-border-style: solid; -fx-border-radius: 3;">
-                     <padding>
-                        <Insets left="7.0" />
-                     </padding>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="input-border-color" />
-                        <String fx:value="regular" />
-                        <String fx:value="space-grotesk" />
-                     </styleClass>
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Button fx:id="chooseFileButton" mnemonicParsing="false" onAction="#chooseContract" prefHeight="39.0" prefWidth="146.0" style="-fx-background-radius: 3;" text="Choose File" textFill="WHITE">
-                     <styleClass>
-                        <String fx:value="background-blue" />
-                        <String fx:value="medium" />
-                        <String fx:value="space-grotesk" />
-                        <String fx:value="button-16" />
-                     </styleClass>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-            <Label text="Expiration Date">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="medium" />
-                  <String fx:value="space-grotesk" />
-               </styleClass>
-               <VBox.margin>
-                  <Insets bottom="4.0" />
-               </VBox.margin>
-            </Label>
-            <DatePicker fx:id="expirationDatePicker" style="-fx-border-width: 0.5; -fx-border-radius: 3;" styleClass="input-border-color">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </DatePicker>
-            <Label fx:id="errorMessageLabel" textFill="RED">
-               <styleClass>
-                  <String fx:value="regular" />
-                  <String fx:value="space-grotesk" />
-               </styleClass>
-               <VBox.margin>
-                  <Insets bottom="35.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#uploadContract" prefHeight="39.0" prefWidth="146.0" style="-fx-background-radius: 3;" text="Upload" textFill="WHITE">
-               <styleClass>
-                  <String fx:value="background-blue" />
-                  <String fx:value="medium" />
-                  <String fx:value="space-grotesk" />
-                  <String fx:value="button-16" />
-               </styleClass>
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="160.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-         <padding>
-            <Insets left="40.0" right="40.0" />
-         </padding>
-      </VBox>
-   </children>
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../../../style.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.armendtahiraga.fileupload.ContractController">
+    <children>
+        <HBox layoutX="45.0" layoutY="35.0">
+            <children>
+                <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="45.0"
+                        prefWidth="45.0" styleClass="background-blue">
+                    <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                            <Image url="@../../../icons/logout.png"/>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="4.0"/>
+                    </padding>
+                    <HBox.margin>
+                        <Insets right="35.0"/>
+                    </HBox.margin>
+                </Button>
+                <Label fx:id="helloLabel" text="Hello, Amina!">
+                    <font>
+                        <Font size="40.0"/>
+                    </font>
+                    <styleClass>
+                        <String fx:value="bold"/>
+                        <String fx:value="space-grotesk"/>
+                    </styleClass>
+                </Label>
+            </children>
+        </HBox>
+        <VBox layoutX="216.0" layoutY="114.0" prefHeight="810.0" prefWidth="1008.0">
+            <children>
+                <HBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label alignment="BOTTOM_LEFT" text="Contracts">
+                            <font>
+                                <Font size="32.0"/>
+                            </font>
+                            <styleClass>
+                                <String fx:value="medium"/>
+                                <String fx:value="space-grotesk"/>
+                            </styleClass>
+                            <HBox.margin>
+                                <Insets right="671.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Button fx:id="uploadContractButton" mnemonicParsing="false" onAction="#openUploadContractModal"
+                                style="-fx-border-radius: 5;" text="Upload Contract" textFill="WHITE">
+                            <padding>
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                            </padding>
+                            <styleClass>
+                                <String fx:value="background-blue"/>
+                                <String fx:value="medium"/>
+                                <String fx:value="space-grotesk"/>
+                                <String fx:value="button-20"/>
+                            </styleClass>
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0"/>
+                    </padding>
+                </HBox>
+                <TableView fx:id="contractsTable" prefHeight="740.0" prefWidth="200.0"
+                           style="-fx-background-radius: 8; -fx-border-radius: 8;" stylesheets="@../../../style.css">
+                    <columns>
+                        <TableColumn fx:id="fileNameTableColumn" minWidth="250.0" prefWidth="75.0" text="File Name"/>
+                        <TableColumn fx:id="expirationDateTableColumn" minWidth="607.0" prefWidth="75.0"
+                                     text="Expiration Date"/>
+                        <TableColumn fx:id="openButtonTableColumn" prefWidth="75.0"/>
+                        <TableColumn fx:id="deleteButtonTableColumn" prefWidth="75.0"/>
+                    </columns>
+                </TableView>
+            </children>
+        </VBox>
+        <VBox fx:id="uploadContractModal" layoutX="445.0" layoutY="315.0" prefHeight="370.0" prefWidth="550.0"
+              style="-fx-background-color: FFF; -fx-border-radius: 8; -fx-background-radius: 8;"
+              styleClass="shadow-black" visible="false">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+                    <children>
+                        <Label text="Upload Contract">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                            <styleClass>
+                                <String fx:value="bold"/>
+                                <String fx:value="space-grotesk"/>
+                            </styleClass>
+                            <HBox.margin>
+                                <Insets right="279.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Button fx:id="closeModalButton" mnemonicParsing="false" onAction="#closeModal"
+                                style="-fx-background-color: fff;">
+                            <graphic>
+                                <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image url="@../../../icons/close.png"/>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="30.0"/>
+                    </VBox.margin>
+                </HBox>
+                <Label text="Contract">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                    <styleClass>
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
+                    </styleClass>
+                    <VBox.margin>
+                        <Insets bottom="4.0" top="40.0"/>
+                    </VBox.margin>
+                </Label>
+                <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets bottom="35.0"/>
+                    </VBox.margin>
+                    <children>
+                        <Label fx:id="contractNameLabel" prefHeight="39.0" prefWidth="272.0"
+                               style="-fx-border-width: 0.5; -fx-border-style: solid; -fx-border-radius: 3;">
+                            <padding>
+                                <Insets left="7.0"/>
+                            </padding>
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                            <styleClass>
+                                <String fx:value="input-border-color"/>
+                                <String fx:value="regular"/>
+                                <String fx:value="space-grotesk"/>
+                            </styleClass>
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Button fx:id="chooseFileButton" mnemonicParsing="false" onAction="#chooseContract"
+                                prefHeight="39.0" prefWidth="146.0" style="-fx-background-radius: 3;" text="Choose File"
+                                textFill="WHITE">
+                            <styleClass>
+                                <String fx:value="background-blue"/>
+                                <String fx:value="medium"/>
+                                <String fx:value="space-grotesk"/>
+                                <String fx:value="button-16"/>
+                            </styleClass>
+                            <font>
+                                <Font size="16.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </HBox>
+                <Label text="Expiration Date">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                    <styleClass>
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
+                    </styleClass>
+                    <VBox.margin>
+                        <Insets bottom="4.0"/>
+                    </VBox.margin>
+                </Label>
+                <DatePicker fx:id="expirationDatePicker" style="-fx-border-width: 0.5; -fx-border-radius: 3;"
+                            styleClass="input-border-color">
+                    <VBox.margin>
+                        <Insets/>
+                    </VBox.margin>
+                </DatePicker>
+                <Label fx:id="errorMessageLabel" textFill="RED">
+                    <styleClass>
+                        <String fx:value="regular"/>
+                        <String fx:value="space-grotesk"/>
+                    </styleClass>
+                    <VBox.margin>
+                        <Insets bottom="35.0" top="5.0"/>
+                    </VBox.margin>
+                </Label>
+                <Button fx:id="uploadButton" mnemonicParsing="false" onAction="#uploadContract" prefHeight="39.0"
+                        prefWidth="146.0" style="-fx-background-radius: 3;" text="Upload" textFill="WHITE">
+                    <styleClass>
+                        <String fx:value="background-blue"/>
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
+                        <String fx:value="button-16"/>
+                    </styleClass>
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="160.0"/>
+                    </VBox.margin>
+                </Button>
+            </children>
+            <padding>
+                <Insets left="40.0" right="40.0"/>
+            </padding>
+        </VBox>
+    </children>
 </AnchorPane>
