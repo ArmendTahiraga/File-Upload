@@ -70,12 +70,14 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 18px;
     -fx-font-weight: 400;
+    -fx-alignment: center-left;
 }
 
 .table-row-cell {
     -fx-background-color: #FFFFFF;
     -fx-border-color: transparent transparent #e3e3e3 transparent;
     -fx-padding: 10px;
+    -fx-alignment: center-left;
 }
 
 .table-view .table-cell {

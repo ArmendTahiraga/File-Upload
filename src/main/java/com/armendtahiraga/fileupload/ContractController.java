@@ -69,7 +69,7 @@ public class ContractController implements Initializable {
 
         contractsTable.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
-        List<Contract> contracts = DatabaseManager.getContracts();
+        List<Contract> contracts = DatabaseManager.getContracts(UserSession.getCurrentUser().getId());
         contractsList.setAll(contracts);
 
         fileNameTableColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getFile().getName().split(".pdf")[0]));
@@ -186,7 +186,7 @@ public class ContractController implements Initializable {
         if (contract != null) {
             uploadContractModal.setVisible(false);
             selectedContract = null;
-            contractNameLabel = null;
+            contractNameLabel.setText("");
             expirationDatePicker.setValue(null);
 
             contractsList.add(contract);
@@ -207,14 +207,12 @@ public class ContractController implements Initializable {
 
             scheduler.schedule(() -> {
                 try {
-                    SystemTray tray = SystemTray.getSystemTray();
-                    TrayIcon trayIcon = new TrayIcon(null, "Contract Reminder");
-                    trayIcon.setToolTip("Contract Notification");
-                    tray.add(trayIcon);
-                    trayIcon.displayMessage("Contract Reminder", message, TrayIcon.MessageType.INFO);
-
-                    Thread.sleep(10000);
-                    tray.remove(trayIcon);
+                    String os = System.getProperty("os.name").toLowerCase();
+                    if (os.contains("win")) {
+                        showNotificationWindows(message);
+                    } else if (os.contains("mac")) {
+                        showNotificationMac(message);
+                    }
                 } catch (Exception exception) {
                     throw new RuntimeException(exception);
                 }
@@ -222,9 +220,36 @@ public class ContractController implements Initializable {
         }
     }
 
+    private void showNotificationWindows(String message) {
+        try {
+            SystemTray tray = SystemTray.getSystemTray();
+            TrayIcon trayIcon = new TrayIcon(null, "Contract Reminder");
+            trayIcon.setToolTip("Contract Notification");
+            tray.add(trayIcon);
+            trayIcon.displayMessage("Contract Reminder", message, TrayIcon.MessageType.INFO);
+
+            Thread.sleep(10000);
+            tray.remove(trayIcon);
+        } catch (Exception exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
+    private void showNotificationMac(String message) {
+        try {
+            String[] script = {"osascript", "-e", "display notification \"" + message + "\" with title \"Contract Reminder\""};
+
+            Runtime.getRuntime().exec(script);
+        } catch (IOException exception) {
+            throw new RuntimeException(exception);
+        }
+    }
+
     @FXML
     void closeModal() {
         uploadContractModal.setVisible(false);
         selectedContract = null;
+        contractNameLabel.setText("");
+        expirationDatePicker.setValue(null);
     }
 }

@@ -17,7 +17,9 @@ public class DatabaseManager {
         }
 
         try {
-            connection = DriverManager.getConnection("jdbc:postgresql://aws-0-eu-central-1.pooler.supabase.com:5432/postgres?user=postgres.rssumxdyrdqeksxnabao&password=72DHGEKpgrdrATxb");
+            System.setProperty("javax.net.ssl.trustStore", "src/main/resources/supabase-truststore.jks");
+            System.setProperty("javax.net.ssl.trustStorePassword", "pass_ca_supabase$");
+            connection = DriverManager.getConnection("jdbc:postgresql://aws-0-eu-central-1.pooler.supabase.com:5432/postgres?user=postgres.rssumxdyrdqeksxnabao&password=72DHGEKpgrdrATxb&ssl=true&sslmode=verify-full&sslrootcert=src/main/resources/prod-ca-2021.crt");
         } catch (SQLException exception) {
             throw new RuntimeException(exception);
         }
@@ -41,7 +43,7 @@ public class DatabaseManager {
             while (result.next()) {
                 Role role;
 
-                if(Objects.equals(result.getString("Role"), "admin")) {
+                if (Objects.equals(result.getString("Role"), "admin")) {
                     role = Role.ADMIN;
                 } else {
                     role = Role.USER;
@@ -50,7 +52,7 @@ public class DatabaseManager {
                 User user = new User(result.getInt("Id"), result.getString("Username"), result.getString("Password"), role);
                 users.add(user);
             }
-        } catch (SQLException exception){
+        } catch (SQLException exception) {
             throw new RuntimeException(exception);
         }
 
@@ -76,20 +78,21 @@ public class DatabaseManager {
                 contract.setId(resultSet.getInt("Id"));
                 return contract;
             }
-        } catch (Exception exception){
+        } catch (Exception exception) {
             throw new RuntimeException(exception);
         }
 
         return null;
     }
 
-    public static List<Contract> getContracts() {
+    public static List<Contract> getContracts(int userId) {
         checkConnection();
         List<Contract> contracts = new ArrayList<>();
 
         try {
-            String select = "select * from \"Contract\"";
+            String select = "select * from \"Contract\" where \"UserId\" = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(select);
+            preparedStatement.setInt(1, userId);
             ResultSet result = preparedStatement.executeQuery();
 
             while (result.next()) {
@@ -102,7 +105,7 @@ public class DatabaseManager {
                 Contract contract = new Contract(result.getInt("Id"), result.getInt("UserId"), file, result.getDate("ExpDate").toLocalDate());
                 contracts.add(contract);
             }
-        } catch (Exception exception){
+        } catch (Exception exception) {
             throw new RuntimeException(exception);
         }
 
@@ -121,7 +124,7 @@ public class DatabaseManager {
             if (rowsDeleted > 0) {
                 return true;
             }
-        } catch (SQLException exception){
+        } catch (SQLException exception) {
             throw new RuntimeException(exception);
         }
 
@@ -140,7 +143,7 @@ public class DatabaseManager {
             if (rowsDeleted > 0) {
                 return true;
             }
-        } catch (SQLException exception){
+        } catch (SQLException exception) {
             throw new RuntimeException(exception);
         }
 
@@ -164,7 +167,7 @@ public class DatabaseManager {
                 user.setId(resultSet.getInt("Id"));
                 return user;
             }
-        } catch (SQLException exception){
+        } catch (SQLException exception) {
             throw new RuntimeException(exception);
         }
 
@@ -188,7 +191,7 @@ public class DatabaseManager {
             if (rowsUpdated > 0) {
                 return true;
             }
-        } catch (SQLException exception){
+        } catch (SQLException exception) {
             throw new RuntimeException(exception);
         }
 
