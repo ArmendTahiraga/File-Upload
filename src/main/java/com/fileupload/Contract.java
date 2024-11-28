@@ -1,8 +1,6 @@
-package com.armendtahiraga.fileupload;
+package com.fileupload;
 
-import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDate;
 
 public class Contract {

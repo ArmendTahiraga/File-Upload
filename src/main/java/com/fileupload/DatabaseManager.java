@@ -1,4 +1,4 @@
-package com.armendtahiraga.fileupload;
+package com.fileupload;
 
 import java.io.File;
 import java.io.FileInputStream;

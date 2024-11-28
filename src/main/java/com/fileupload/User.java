@@ -1,4 +1,4 @@
-package com.armendtahiraga.fileupload;
+package com.fileupload;
 
 public class User {
     private int id;

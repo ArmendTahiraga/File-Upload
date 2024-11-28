@@ -1,4 +1,4 @@
-package com.armendtahiraga.fileupload;
+package com.fileupload;
 
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;

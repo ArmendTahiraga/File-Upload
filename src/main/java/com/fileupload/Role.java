@@ -1,4 +1,4 @@
-package com.armendtahiraga.fileupload;
+package com.fileupload;
 
 public enum Role {
     USER,

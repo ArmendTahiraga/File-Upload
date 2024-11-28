@@ -7,6 +7,6 @@ module com.armendtahiraga.fileupload {
     requires jbcrypt;
     requires java.desktop;
 
-    opens com.armendtahiraga.fileupload to javafx.fxml;
-    exports com.armendtahiraga.fileupload;
+    opens com.fileupload to javafx.fxml;
+    exports com.fileupload;
 }

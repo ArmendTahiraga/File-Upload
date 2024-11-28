@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1024.0"
-            prefWidth="1440.0" style="-fx-background-color: F7F8FA;" stylesheets="@../../../style.css"
+            prefWidth="1440.0" style="-fx-background-color: F7F8FA;" stylesheets="@../../style.css"
             xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.armendtahiraga.fileupload.LoginController">
+            fx:controller="com.fileupload.LoginController">
     <children>
         <VBox layoutX="420.0" layoutY="292.0" prefHeight="440.0" prefWidth="600.0"
               style="-fx-background-color: FFFFFF; -fx-background-radius: 10;" styleClass="shadow-blue">

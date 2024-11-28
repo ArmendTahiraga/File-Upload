@@ -1,4 +1,4 @@
-package com.armendtahiraga.fileupload;
+package com.fileupload;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
