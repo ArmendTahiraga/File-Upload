@@ -71,8 +71,8 @@ public class AdminController implements Initializable {
     @FXML
     private ComboBox<Role> roleEditComboBox;
 
-    ObservableList<User> usersList = FXCollections.observableArrayList();
-    int editingUserIndex;
+    private ObservableList<User> usersList = FXCollections.observableArrayList();
+    private int editingUserIndex;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -190,6 +190,7 @@ public class AdminController implements Initializable {
         usernameEditTextField.setText("");
         passwordEditPasswordField.setText("");
         roleEditComboBox.setValue(null);
+        editingUserIndex = -1;
     }
 
     @FXML

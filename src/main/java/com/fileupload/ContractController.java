@@ -60,7 +60,7 @@ public class ContractController implements Initializable {
     @FXML
     private TableColumn<Contract, Void> deleteButtonTableColumn;
 
-    File selectedContract;
+    private File selectedContract;
     private ObservableList<Contract> contractsList = FXCollections.observableArrayList();
 
     @Override

@@ -16,30 +16,33 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../../style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.fileupload.AdminController">
+<AnchorPane prefHeight="1024.0" prefWidth="1440.0" stylesheets="@../../style.css"
+            xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.fileupload.AdminController">
     <children>
         <HBox layoutX="45.0" layoutY="35.0">
             <children>
-                <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="45.0" prefWidth="45.0" styleClass="background-blue">
+                <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="45.0"
+                        prefWidth="45.0" styleClass="background-blue">
                     <graphic>
                         <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                            <Image url="@../../icons/logout.png" />
+                            <Image url="@../../icons/logout.png"/>
                         </ImageView>
                     </graphic>
                     <padding>
-                        <Insets left="4.0" />
+                        <Insets left="4.0"/>
                     </padding>
                     <HBox.margin>
-                        <Insets right="35.0" />
+                        <Insets right="35.0"/>
                     </HBox.margin>
                 </Button>
                 <Label fx:id="helloLabel" text="Hello, Admin!">
                     <font>
-                        <Font size="40.0" />
+                        <Font size="40.0"/>
                     </font>
                     <styleClass>
-                        <String fx:value="bold" />
-                        <String fx:value="space-grotesk" />
+                        <String fx:value="bold"/>
+                        <String fx:value="space-grotesk"/>
                     </styleClass>
                 </Label>
             </children>
@@ -50,250 +53,266 @@
                     <children>
                         <Label alignment="BOTTOM_LEFT" text="Users">
                             <font>
-                                <Font size="32.0" />
+                                <Font size="32.0"/>
                             </font>
                             <styleClass>
-                                <String fx:value="medium" />
-                                <String fx:value="space-grotesk" />
+                                <String fx:value="medium"/>
+                                <String fx:value="space-grotesk"/>
                             </styleClass>
                             <HBox.margin>
-                                <Insets right="770.0" />
+                                <Insets right="770.0"/>
                             </HBox.margin>
                         </Label>
-                        <Button fx:id="addNewUserButton" mnemonicParsing="false" onAction="#openAddUserModal" style="-fx-border-radius: 5;" text="Add new user" textFill="WHITE">
+                        <Button fx:id="addNewUserButton" mnemonicParsing="false" onAction="#openAddUserModal"
+                                style="-fx-border-radius: 5;" text="Add new user" textFill="WHITE">
                             <padding>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                             </padding>
                             <styleClass>
-                                <String fx:value="background-blue" />
-                                <String fx:value="medium" />
-                                <String fx:value="space-grotesk" />
-                                <String fx:value="button-20" />
+                                <String fx:value="background-blue"/>
+                                <String fx:value="medium"/>
+                                <String fx:value="space-grotesk"/>
+                                <String fx:value="button-20"/>
                             </styleClass>
                             <font>
-                                <Font size="20.0" />
+                                <Font size="20.0"/>
                             </font>
                         </Button>
                     </children>
                     <padding>
-                        <Insets bottom="20.0" />
+                        <Insets bottom="20.0"/>
                     </padding>
                 </HBox>
-                <TableView fx:id="usersTable" prefHeight="740.0" prefWidth="200.0" style="-fx-background-radius: 8; -fx-border-radius: 8;" stylesheets="@../../style.css">
+                <TableView fx:id="usersTable" prefHeight="740.0" prefWidth="200.0"
+                           style="-fx-background-radius: 8; -fx-border-radius: 8;" stylesheets="@../../style.css">
                     <columns>
-                        <TableColumn fx:id="usernameTableColumn" minWidth="250.0" prefWidth="75.0" text="Username" />
-                        <TableColumn fx:id="passwordTableColumn" minWidth="400.0" prefWidth="75.0" text="Password" />
-                  <TableColumn fx:id="roleTableColumn" minWidth="207.0" prefWidth="75.0" text="Role" />
-                        <TableColumn fx:id="editButtonTableColumn" prefWidth="75.0" />
-                        <TableColumn fx:id="deleteButtonTableColumn" prefWidth="75.0" />
+                        <TableColumn fx:id="usernameTableColumn" minWidth="250.0" prefWidth="75.0" text="Username"/>
+                        <TableColumn fx:id="passwordTableColumn" minWidth="400.0" prefWidth="75.0" text="Password"/>
+                        <TableColumn fx:id="roleTableColumn" minWidth="207.0" prefWidth="75.0" text="Role"/>
+                        <TableColumn fx:id="editButtonTableColumn" prefWidth="75.0"/>
+                        <TableColumn fx:id="deleteButtonTableColumn" prefWidth="75.0"/>
                     </columns>
                 </TableView>
             </children>
         </VBox>
-        <VBox fx:id="addUserModal" layoutX="445.0" layoutY="315.0" prefHeight="460.0" prefWidth="550.0" style="-fx-background-color: FFF; -fx-border-radius: 8; -fx-background-radius: 8;" styleClass="shadow-black" visible="false">
+        <VBox fx:id="addUserModal" layoutX="445.0" layoutY="315.0" prefHeight="460.0" prefWidth="550.0"
+              style="-fx-background-color: FFF; -fx-border-radius: 8; -fx-background-radius: 8;"
+              styleClass="shadow-black" visible="false">
             <children>
                 <HBox alignment="CENTER_LEFT" prefWidth="200.0">
                     <children>
                         <Label text="Add new user">
                             <font>
-                                <Font size="20.0" />
+                                <Font size="20.0"/>
                             </font>
                             <styleClass>
-                                <String fx:value="bold" />
-                                <String fx:value="space-grotesk" />
+                                <String fx:value="bold"/>
+                                <String fx:value="space-grotesk"/>
                             </styleClass>
                             <HBox.margin>
-                                <Insets right="309.0" />
+                                <Insets right="309.0"/>
                             </HBox.margin>
                         </Label>
-                        <Button fx:id="closeAddModalButton" mnemonicParsing="false" onAction="#closeAddUserModal" style="-fx-background-color: fff;">
+                        <Button fx:id="closeAddModalButton" mnemonicParsing="false" onAction="#closeAddUserModal"
+                                style="-fx-background-color: fff;">
                             <graphic>
                                 <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                                    <Image url="@../../icons/close.png" />
+                                    <Image url="@../../icons/close.png"/>
                                 </ImageView>
                             </graphic>
                         </Button>
                     </children>
                     <VBox.margin>
-                        <Insets top="30.0" />
+                        <Insets top="30.0"/>
                     </VBox.margin>
                 </HBox>
                 <Label text="Username">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                     <styleClass>
-                        <String fx:value="medium" />
-                        <String fx:value="space-grotesk" />
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
                     </styleClass>
                     <VBox.margin>
-                        <Insets bottom="4.0" top="40.0" />
+                        <Insets bottom="4.0" top="40.0"/>
                     </VBox.margin>
                 </Label>
-            <TextField fx:id="usernameAddTextField" prefHeight="39.0" style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color">
-               <VBox.margin>
-                  <Insets bottom="30.0" />
-               </VBox.margin>
-            </TextField>
+                <TextField fx:id="usernameAddTextField" prefHeight="39.0"
+                           style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color">
+                    <VBox.margin>
+                        <Insets bottom="30.0"/>
+                    </VBox.margin>
+                </TextField>
                 <Label text="Password">
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                     <styleClass>
-                        <String fx:value="medium" />
-                        <String fx:value="space-grotesk" />
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
                     </styleClass>
                     <VBox.margin>
-                        <Insets bottom="4.0" />
+                        <Insets bottom="4.0"/>
                     </VBox.margin>
                 </Label>
-            <PasswordField fx:id="passwordAddPasswordField" prefHeight="39.0" style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color">
-               <VBox.margin>
-                  <Insets bottom="30.0" />
-               </VBox.margin>
-            </PasswordField>
-            <Label text="Role">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="medium" />
-                  <String fx:value="space-grotesk" />
-               </styleClass>
-               <VBox.margin>
-                  <Insets bottom="4.0" />
-               </VBox.margin>
-            </Label>
-            <ComboBox fx:id="roleAddComboBox" prefHeight="39.0" prefWidth="470.0" style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color" />
+                <PasswordField fx:id="passwordAddPasswordField" prefHeight="39.0"
+                               style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color">
+                    <VBox.margin>
+                        <Insets bottom="30.0"/>
+                    </VBox.margin>
+                </PasswordField>
+                <Label text="Role">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                    <styleClass>
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
+                    </styleClass>
+                    <VBox.margin>
+                        <Insets bottom="4.0"/>
+                    </VBox.margin>
+                </Label>
+                <ComboBox fx:id="roleAddComboBox" prefHeight="39.0" prefWidth="470.0"
+                          style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color"/>
                 <Label fx:id="errorMessageAddLabel" textFill="RED">
                     <styleClass>
-                        <String fx:value="regular" />
-                        <String fx:value="space-grotesk" />
+                        <String fx:value="regular"/>
+                        <String fx:value="space-grotesk"/>
                     </styleClass>
                     <VBox.margin>
-                        <Insets bottom="20.0" top="5.0" />
+                        <Insets bottom="20.0" top="5.0"/>
                     </VBox.margin>
                 </Label>
-                <Button fx:id="addButton" mnemonicParsing="false" onAction="#addUser" prefHeight="39.0" prefWidth="146.0" style="-fx-background-radius: 3;" text="Add" textFill="WHITE">
+                <Button fx:id="addButton" mnemonicParsing="false" onAction="#addUser" prefHeight="39.0"
+                        prefWidth="146.0" style="-fx-background-radius: 3;" text="Add" textFill="WHITE">
                     <styleClass>
-                        <String fx:value="background-blue" />
-                        <String fx:value="medium" />
-                        <String fx:value="space-grotesk" />
-                        <String fx:value="button-16" />
+                        <String fx:value="background-blue"/>
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
+                        <String fx:value="button-16"/>
                     </styleClass>
                     <font>
-                        <Font size="16.0" />
+                        <Font size="16.0"/>
                     </font>
                     <VBox.margin>
-                        <Insets left="160.0" />
+                        <Insets left="160.0"/>
                     </VBox.margin>
                 </Button>
             </children>
             <padding>
-                <Insets left="40.0" right="40.0" />
+                <Insets left="40.0" right="40.0"/>
             </padding>
         </VBox>
-      <VBox fx:id="editUserModal" layoutX="445.0" layoutY="315.0" prefHeight="460.0" prefWidth="550.0" style="-fx-background-color: FFF; -fx-border-radius: 8; -fx-background-radius: 8;" styleClass="shadow-black" visible="false">
-         <children>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
-               <children>
-                  <Label text="Edit user">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <styleClass>
-                        <String fx:value="bold" />
-                        <String fx:value="space-grotesk" />
-                     </styleClass>
-                     <HBox.margin>
-                        <Insets right="354.0" />
-                     </HBox.margin>
-                  </Label>
-                  <Button fx:id="closeEditModalButton" mnemonicParsing="false" onAction="#closeEditUserModal" style="-fx-background-color: fff;">
-                     <graphic>
-                        <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../icons/close.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets top="30.0" />
-               </VBox.margin>
-            </HBox>
-            <Label text="Username">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="medium" />
-                  <String fx:value="space-grotesk" />
-               </styleClass>
-               <VBox.margin>
-                  <Insets bottom="4.0" top="40.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="usernameEditTextField" prefHeight="39.0" style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color">
-               <VBox.margin>
-                  <Insets bottom="30.0" />
-               </VBox.margin>
-            </TextField>
-            <Label text="Password">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="medium" />
-                  <String fx:value="space-grotesk" />
-               </styleClass>
-               <VBox.margin>
-                  <Insets bottom="4.0" />
-               </VBox.margin>
-            </Label>
-            <PasswordField fx:id="passwordEditPasswordField" prefHeight="39.0" style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color">
-               <VBox.margin>
-                  <Insets bottom="30.0" />
-               </VBox.margin>
-            </PasswordField>
-            <Label text="Role">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <styleClass>
-                  <String fx:value="medium" />
-                  <String fx:value="space-grotesk" />
-               </styleClass>
-            </Label>
-            <ComboBox fx:id="roleEditComboBox" prefHeight="39.0" prefWidth="470.0" style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color" />
-            <Label fx:id="errorMessageEditLabel" textFill="RED">
-               <styleClass>
-                  <String fx:value="regular" />
-                  <String fx:value="space-grotesk" />
-               </styleClass>
-               <VBox.margin>
-                  <Insets bottom="20.0" top="5.0" />
-               </VBox.margin>
-            </Label>
-            <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateUser" prefHeight="39.0" prefWidth="146.0" style="-fx-background-radius: 3;" text="Update" textFill="WHITE">
-               <styleClass>
-                  <String fx:value="background-blue" />
-                  <String fx:value="medium" />
-                  <String fx:value="space-grotesk" />
-                  <String fx:value="button-16" />
-               </styleClass>
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="160.0" />
-               </VBox.margin>
-            </Button>
-         </children>
-         <padding>
-            <Insets left="40.0" right="40.0" />
-         </padding>
-      </VBox>
+        <VBox fx:id="editUserModal" layoutX="445.0" layoutY="315.0" prefHeight="460.0" prefWidth="550.0"
+              style="-fx-background-color: FFF; -fx-border-radius: 8; -fx-background-radius: 8;"
+              styleClass="shadow-black" visible="false">
+            <children>
+                <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+                    <children>
+                        <Label text="Edit user">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                            <styleClass>
+                                <String fx:value="bold"/>
+                                <String fx:value="space-grotesk"/>
+                            </styleClass>
+                            <HBox.margin>
+                                <Insets right="354.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Button fx:id="closeEditModalButton" mnemonicParsing="false" onAction="#closeEditUserModal"
+                                style="-fx-background-color: fff;">
+                            <graphic>
+                                <ImageView fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../../icons/close.png"/>
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="30.0"/>
+                    </VBox.margin>
+                </HBox>
+                <Label text="Username">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                    <styleClass>
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
+                    </styleClass>
+                    <VBox.margin>
+                        <Insets bottom="4.0" top="40.0"/>
+                    </VBox.margin>
+                </Label>
+                <TextField fx:id="usernameEditTextField" prefHeight="39.0"
+                           style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color">
+                    <VBox.margin>
+                        <Insets bottom="30.0"/>
+                    </VBox.margin>
+                </TextField>
+                <Label text="Password">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                    <styleClass>
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
+                    </styleClass>
+                    <VBox.margin>
+                        <Insets bottom="4.0"/>
+                    </VBox.margin>
+                </Label>
+                <PasswordField fx:id="passwordEditPasswordField" prefHeight="39.0"
+                               style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color">
+                    <VBox.margin>
+                        <Insets bottom="30.0"/>
+                    </VBox.margin>
+                </PasswordField>
+                <Label text="Role">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                    <styleClass>
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
+                    </styleClass>
+                </Label>
+                <ComboBox fx:id="roleEditComboBox" prefHeight="39.0" prefWidth="470.0"
+                          style="-fx-background-color: FFF; -fx-border-radius: 3;" styleClass="input-border-color"/>
+                <Label fx:id="errorMessageEditLabel" textFill="RED">
+                    <styleClass>
+                        <String fx:value="regular"/>
+                        <String fx:value="space-grotesk"/>
+                    </styleClass>
+                    <VBox.margin>
+                        <Insets bottom="20.0" top="5.0"/>
+                    </VBox.margin>
+                </Label>
+                <Button fx:id="updateButton" mnemonicParsing="false" onAction="#updateUser" prefHeight="39.0"
+                        prefWidth="146.0" style="-fx-background-radius: 3;" text="Update" textFill="WHITE">
+                    <styleClass>
+                        <String fx:value="background-blue"/>
+                        <String fx:value="medium"/>
+                        <String fx:value="space-grotesk"/>
+                        <String fx:value="button-16"/>
+                    </styleClass>
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                    <VBox.margin>
+                        <Insets left="160.0"/>
+                    </VBox.margin>
+                </Button>
+            </children>
+            <padding>
+                <Insets left="40.0" right="40.0"/>
+            </padding>
+        </VBox>
     </children>
 </AnchorPane>
